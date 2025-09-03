@@ -22,13 +22,13 @@ public class Client {
 
     List<Employee> all = new ArrayList<>();
     for (EmployeeCSV csv : csvRows) {
-      all.add(new EmployeeCSVAdapter(csv));
+      all.add(EmployeeAdapterFactory.create(csv));
     }
     for (EmployeeDB db : dbRows) {
-      all.add(new EmployeeDBAdapter(db));
+      all.add(EmployeeAdapterFactory.create(db));
     }
     for (EmployeeLDAP ldap : ldapRows) {
-      all.add(new EmployeeLDAPAdapter(ldap));
+      all.add(EmployeeAdapterFactory.create(ldap));
     }
 
     EmployeePrinter.print(all);
